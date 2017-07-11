@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jxl.jar"/>
+	<classpathentry kind="lib" path="poi-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="poi-excelant-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="poi-ooxml-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="poi-scratchpad-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="json-1.0.jar"/>
+	<classpathentry kind="lib" path="json-lib-2.3.jar"/>
+	<classpathentry kind="lib" path="xml-apis.jar"/>
+	<classpathentry kind="lib" path="xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="javax.xml.parsers-1_1.jar"/>
+	<classpathentry kind="lib" path="javax.xml-1.3.4.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
