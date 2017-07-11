@@ -5,13 +5,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class Console {
 
@@ -61,17 +61,17 @@ public class Console {
 		btnRoot.setBounds(21, 97, 235, 40);
 		frame.getContentPane().add(btnRoot);
 
-		JLabel excelPath = new JLabel("");
-		excelPath.setBounds(21, 59, 392, 15);
+		JTextField excelPath = new JTextField("可选择或输入EXCEL文件路径");
+		excelPath.setBounds(21, 59, 392, 28);
 		frame.getContentPane().add(excelPath);
 
-		JLabel rootPath = new JLabel("");
-		rootPath.setBounds(21, 147, 392, 15);
+		JTextField rootPath = new JTextField("可选择或输入资源文件夹路径");
+		rootPath.setBounds(21, 147, 392, 30);
 		frame.getContentPane().add(rootPath);
 
 		JButton btnTranslate = new JButton("Translate");
 		btnTranslate.setFont(new Font("宋体", Font.PLAIN, 20));
-		btnTranslate.setBounds(163, 202, 143, 40);
+		btnTranslate.setBounds(134, 196, 143, 40);
 		frame.getContentPane().add(btnTranslate);
 
 		btnTranslate.addActionListener(new ActionListener() {
@@ -91,8 +91,9 @@ public class Console {
 				try {
 					Main.runTask(excel, root);
 					JOptionPane.showConfirmDialog(null, "操作完成", "", JOptionPane.CLOSED_OPTION);
-				} catch (FileNotFoundException e1) {
+				} catch (Exception e1) {
 					e1.printStackTrace();
+					JOptionPane.showConfirmDialog(null, "操作失败", "", JOptionPane.CLOSED_OPTION);
 				}
 			}
 		});
@@ -100,6 +101,7 @@ public class Console {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser jfc = new JFileChooser();
+				jfc.setCurrentDirectory(new File(new File("").getAbsolutePath()));
 				jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				jfc.showDialog(new JLabel(), "选择EXCEL文件");
 				File file = jfc.getSelectedFile();
@@ -112,6 +114,7 @@ public class Console {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser jfc = new JFileChooser();
+				jfc.setCurrentDirectory(new File(new File("").getAbsolutePath()));
 				jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				jfc.showDialog(new JLabel(), "选择项目资源根目录");
 				File file = jfc.getSelectedFile();

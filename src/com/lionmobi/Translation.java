@@ -3,8 +3,8 @@ package com.lionmobi;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,9 +18,12 @@ public class Translation {
 	private String ROOT;
 	private CompleteLanaguageXml xmlCompletor;
 
+	
 	public void doTranslate(String filePath, String targetDirectory)
-			throws FileNotFoundException {
-
+			throws Exception {
+		String csn = Charset.defaultCharset().name();
+		System.out.println("charset -> " +csn);
+		
 		ROOT = findRootPath(targetDirectory);
 		xmlCompletor = new CompleteLanaguageXml();
 
@@ -42,7 +45,7 @@ public class Translation {
 				return false;
 			}
 
-		}, new FileInputStream(new File(filePath)));
+		}, new FileInputStream(new File(filePath)));	
 	}
 
 	/**

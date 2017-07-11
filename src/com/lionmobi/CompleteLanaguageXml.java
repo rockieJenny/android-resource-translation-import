@@ -1,15 +1,18 @@
 package com.lionmobi;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class CompleteLanaguageXml {
 
 	public void complete(String targetXml, String key, String value)
 			throws Exception {
-		BufferedReader br = new BufferedReader(new FileReader(targetXml));
+		value = value.replaceAll("<", "&lt;").replaceAll(">", "&gt");
+		//BufferedReader br = new BufferedReader(new FileReader(targetXml));
+		BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(targetXml),"UTF-8"));  
 		String line = null;
 		boolean found = false;
 		StringBuilder sb = new StringBuilder();
@@ -30,8 +33,15 @@ public class CompleteLanaguageXml {
 		}
 
 		br.close();
-		FileWriter fileWrite = new FileWriter(new File(targetXml));
-		fileWrite.write(sb.toString());
-		fileWrite.close();
+		OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
+				new FileOutputStream(targetXml), "utf-8");
+		outputStreamWriter.write(sb.toString());
+		byte[] bytes = sb.toString().getBytes();
+		StringBuilder byttt = new StringBuilder();
+		for (byte b : bytes) {
+			byttt.append((int) b);
+		}
+	
+		outputStreamWriter.close();
 	}
 }
