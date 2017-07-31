@@ -18,12 +18,11 @@ public class Translation {
 	private String ROOT;
 	private CompleteLanaguageXml xmlCompletor;
 
-	
 	public void doTranslate(String filePath, String targetDirectory)
 			throws Exception {
 		String csn = Charset.defaultCharset().name();
-		System.out.println("charset -> " +csn);
-		
+		System.out.println("charset -> " + csn);
+
 		ROOT = findRootPath(targetDirectory);
 		xmlCompletor = new CompleteLanaguageXml();
 
@@ -45,7 +44,7 @@ public class Translation {
 				return false;
 			}
 
-		}, new FileInputStream(new File(filePath)));	
+		}, new FileInputStream(new File(filePath)));
 	}
 
 	/**
@@ -55,7 +54,20 @@ public class Translation {
 	 */
 	private void matchKey(List<Cell> cells) throws Exception {
 		// 0 represent key
+		System.out.println(cells.get(0).getContent());
 		if (cells.size() < languageMapper.size()) {
+			String comment = cells.get(0).getContent();
+			for (int i = 0; i < languageMapper.size(); i++) {
+				String language = languageMapper.get(i);
+				if (language == null) {
+					continue;
+				}
+				String targetXml = ROOT + String.format(PATH_FORMATTER, language);
+				if ("en".equals(language)) {
+					targetXml = ROOT + "\\values\\strings.xml";
+				}
+				xmlCompletor.addComment(targetXml, comment);
+			}
 			return;
 		}
 		for (int i = 1; i < cells.size(); i++) {
@@ -72,7 +84,7 @@ public class Translation {
 			// should not trim or toLowerCase
 			String value = cells.get(i).getContent();
 			xmlCompletor.complete(targetXml, key, value);
-			System.out.println(language + "  -  " + key + "  -   " + value);
+			// System.out.println(language + "  -  " + key + "  -   " + value);
 		}
 	}
 

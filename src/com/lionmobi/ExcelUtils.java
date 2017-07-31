@@ -98,31 +98,32 @@ public class ExcelUtils {
     static int i = 0;
     
     private static String getValue(XSSFCell xssfCell) throws UnsupportedEncodingException {
-        if (xssfCell.getCellType() == XSSFCell.CELL_TYPE_BOOLEAN) {
+    	return xssfCell.toString();
+        /*if (xssfCell.getCellType() == XSSFCell.CELL_TYPE_BOOLEAN) {
             return String.valueOf(xssfCell.getBooleanCellValue());
         } else if (xssfCell.getCellType() == XSSFCell.CELL_TYPE_NUMERIC || xssfCell.getCellType() == XSSFCell.CELL_TYPE_FORMULA) {
             return xssfCell.getRawValue();
         } else {
-        	/*System.out.println(new String(xssfCell.getStringCellValue().getBytes("GBK"),"UTF-8"));
+        	System.out.println(new String(xssfCell.getStringCellValue().getBytes("GBK"),"UTF-8"));
         	System.out.println(new String(xssfCell.getStringCellValue().getBytes("GB2312"),"UTF-8"));
-        	System.out.println(new String(xssfCell.getStringCellValue().getBytes(),"UTF-8"));*/
-        	/*System.out.println(new String(xssfCell.getStringCellValue().getBytes(Charset.forName("UTF-8")),"UTF-8"));
+        	System.out.println(new String(xssfCell.getStringCellValue().getBytes(),"UTF-8"));
+        	System.out.println(new String(xssfCell.getStringCellValue().getBytes(Charset.forName("UTF-8")),"UTF-8"));
         	System.out.println(new String(xssfCell.getStringCellValue().getBytes(Charset.forName("GB2312")),"UTF-8"));
         	System.out.println(new String(xssfCell.getStringCellValue().getBytes(),"UTF-8"));
         	System.out.println(new String(xssfCell.getStringCellValue().getBytes("ISO8859_1"),"UTF-8"));
-        	System.out.println(new String(xssfCell.getStringCellValue().getBytes(Charset.forName("GBK")),"UTF-8"));*/
+        	System.out.println(new String(xssfCell.getStringCellValue().getBytes(Charset.forName("GBK")),"UTF-8"));
         
         	byte[] bytes = xssfCell.getStringCellValue().getBytes();
         	StringBuilder sb = new StringBuilder();
         	for(byte b : bytes){
         		sb.append((int)b);
         	}
-        	/*if( i++ <100 ){
+        	if( i++ <100 ){
         		System.out.println(sb.toString());
         		System.out.println(new String(xssfCell.getStringCellValue().getBytes("UTF-8"),"GBK"));
-        	}*/
+        	}
             return xssfCell.getStringCellValue(); //String.valueOf(xssfCell.getStringCellValue());
-        }
+        }*/
     }
 
     /**
@@ -136,7 +137,7 @@ public class ExcelUtils {
             if (hssfSheet == null) {
                 continue;
             }
-            for (int rowNum = 0; rowNum <= hssfSheet.getColumns(); rowNum++) {
+            for (int rowNum = 0; rowNum < hssfSheet.getRows(); rowNum++) {
                 Row row = new Row(rowNum, sheetNum);
                 jxl.Cell[] hssfRow = hssfSheet.getRow(rowNum);
                 if (hssfRow == null) {
